@@ -1,0 +1,115 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Custom scroll examples page</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/vendor/bootstrap.css">
+	<link rel="stylesheet" href="../src/jquery.custom-scroll.css">
+	<link rel="stylesheet" href="css/examples.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Custom scroll</a>
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+	<!-- example 1 -->
+	<h4>Simple custom scroll</h4>
+	<div class="cs-example" data-id="example1">
+		<div class="test-box" id="example1">
+			1<br />
+			2<br />
+			3<br />
+			4<br />
+			5<br />
+			6<br />
+			7<br />
+			8<br />
+			9<br />
+			10<br />
+			11<br />
+			12<br />
+			13<br />
+		</div>
+	</div>
+	<pre class="highlight">
+$('#example1').customScroll();</pre>
+	<!-- eo example 1 -->
+
+	<!-- example 2 -->
+	<h4>Custom scroll with dynamic content</h4>
+	<div class="cs-example" data-id="example2">
+		<div class="test-box" id="example2">
+			<div class="lorem"></div>
+		</div>
+		<br />
+		<div class="controls">
+			<span class="btn btn-sm btn-default example-add-content">Add content</span>
+			<span class="btn btn-sm btn-default example-remove-content">Remove content</span>
+			<span class="btn btn-sm btn-default example-re-init">Re-init</span>
+			<input type="checkbox" class="example-re-init-flag" checked>
+		</div>
+	</div>
+	<pre class="highlight">
+$('#example2').customScroll();</pre>
+	<!-- eo example 2 -->
+
+	<!-- example 3 -->
+	<h4>Custom scroll with custom bar</h4>
+	<div class="cs-example" data-id="example3">
+		<div class="test-box" id="example3">
+			<div class="lorem"></div>
+		</div>
+		<br />
+		<div class="controls">
+			<span class="btn btn-sm btn-default example-add-content">Add content</span>
+			<span class="btn btn-sm btn-default example-remove-content">Remove content</span>
+			<span class="btn btn-sm btn-default example-re-init">Re-init</span>
+			<input type="checkbox" class="example-re-init-flag" checked>
+		</div>
+	</div>
+	<pre class="highlight">
+$('#example3').customScroll({
+	'barHtml': '&lt;div class="custom-scroll_bar pretty-bar">&lt;div class="arrow top" />&lt;div class="arrow bottom" />&lt;div class="middle" />&lt;/div>'
+});</pre>
+	<!-- eo example 3 -->
+
+	<!-- example 4 -->
+	<h4>Custom scroll without bar</h4>
+	<div class="cs-example" data-id="example4">
+		<div class="test-box" id="example4">
+			<div class="lorem"></div>
+		</div>
+		<br />
+		<div class="controls">
+			<span class="btn btn-sm btn-default example-add-content">Add content</span>
+			<span class="btn btn-sm btn-default example-remove-content">Remove content</span>
+			<span class="btn btn-sm btn-default example-re-init">Re-init</span>
+			<input type="checkbox" class="example-re-init-flag" checked>
+		</div>
+	</div>
+	<pre class="highlight">
+$('#example4').customScroll({
+	'barHtml': ''
+});</pre>
+	<!-- eo example 4 -->
+
+</div>
+
+<script src="js/vendor/jquery-1.11.0.js"></script>
+<script src="../src/jquery.custom-scroll.js"></script>
+<script src="js/examples.js"></script>
+</body>
+</html>
