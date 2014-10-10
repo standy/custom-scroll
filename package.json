@@ -1,0 +1,24 @@
+{
+  "name": "custom-scroll",
+  "version": "0.1.0",
+  "description": "Customize your scrollbar",
+  "author": "standy <mostovoyav@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/standys/custom-scroll"
+  },
+  "bugs": {
+    "url": "https://github.com/standys/custom-scroll/issues"
+  },
+  "keywords": [
+    "custom scrollbar",
+    "scrollbar"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.1"
+  },
+  "license": "MIT"
+}
