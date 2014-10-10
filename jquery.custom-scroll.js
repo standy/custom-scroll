@@ -1,5 +1,12 @@
 (function($) {
 	$.fn.customScroll = function(options) {
+		if (options === 'destroy') {
+			this.each(function() {
+				var cs = $(this).data('custom-scroll');
+				if (cs) cs.destroy();
+			});
+			return;
+		}
 		if (this.length===1) return customScroll(this, options);
 		this.each(function() {
 			customScroll($(this), options);
@@ -22,11 +29,12 @@
 			return cs;
 		}
 		var barHtml = options.barHtml!=null ? options.barHtml : '<div class="'+cls('bar')+' '+cls('hidden')+'"></div>';
-		var $bar = $(barHtml);
+		var $barAndMisc = $(barHtml);
 		$container
 			.addClass(cls('container'))
 			.wrapInner('<div class="'+cls('inner')+'"></div>')
-			.append($bar);
+			.append($barAndMisc);
+		var $bar = $barAndMisc.last();
 		var $inner = $container.children('.' + cls('inner'));
 
 
@@ -55,6 +63,7 @@
 			$container: $container,
 			$bar: $bar,
 			$inner: $inner,
+			destroy: destroy,
 			updateBar: updateBar
 		};
 		$container.data('custom-scroll', data);
@@ -89,6 +98,12 @@
 			$bar
 				.height(c.barHeight)
 				.css('top', barTop);
+		}
+		function destroy() {
+			$barAndMisc.remove();
+			$container.removeClass(cls('container')).removeData('custom-scroll');
+			$inner.contents().appendTo($container);
+			$inner.remove();
 		}
 
 		function cls(cls) {
