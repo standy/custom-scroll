@@ -1,12 +1,11 @@
 .custom-scroll_container {
-	overflow: hidden;
+	overflow: hidden !important;
 	position: relative;
 	padding-right: 0 !important;
 }
 .custom-scroll_inner {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	/*width: calc(100% + 20px);*/
 	margin-right: -20px;
 	padding-right: 20px;
 	height: 100%;
@@ -15,12 +14,12 @@
 	cursor: default;
 	position: absolute;
 	top: 0;
-	right: 2px;
+	right: 1px;
 	border-radius: 1px;
 	z-index: 1;
 	width: 8px;
 	height: 20px;
-	background: #bbb;
+	background: #888;
 
 	-webkit-user-select: none;
 	 -khtml-user-select: none;
@@ -28,11 +27,18 @@
 	     -o-user-select: none;
 	        user-select: none;
 
-	opacity: 1;
-	transition: opacity .3s, height .3s, top .1s;
+	opacity: .5;
 }
+.custom-scroll_bar:hover {
+	opacity: .7;
+}
+.custom-scroll_bar:active {
+	opacity: 1;
+}
+
 .custom-scroll_bar.custom-scroll_hidden {
 	opacity: 0;
 	height: 100%;
 	top: 0;
+	transition: opacity .3s, height .3s, top .1s;
 }
