@@ -1,9 +1,9 @@
 {
   "name": "custom-scroll",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "title": "Customize your scrollbar",
   "author": {
-    "name" : "standy",
+    "name" : "Mostovoy Andrey",
     "email" : "mostovoyav@gmail.com",
     "url" : "https://github.com/standys/"
   },
@@ -13,18 +13,6 @@
   "dependencies": {
     "jquery": ">=1.7"
   },
-  "ignore": [
-    "test",
-    ".*",
-    "*.json",
-    "*.md",
-    "*.txt",
-    "gulpfile.js",
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "tests"
-  ],
   "homepage": "https://github.com/standys/custom-scroll",
   "demo": "http://standys.github.io/custom-scroll/examples.html",
   "download": "https://raw.githubusercontent.com/standys/custom-scroll/master/jquery.custom-scroll.js",

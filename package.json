@@ -1,8 +1,8 @@
 {
   "name": "custom-scroll",
-  "version": "0.1.1",
+  "version": "0.4.5",
   "description": "Customize your scrollbar",
-  "author": "standy <mostovoyav@gmail.com>",
+  "author": "Mostovoy Andrey <mostovoyav@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/standys/custom-scroll"

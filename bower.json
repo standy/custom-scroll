@@ -1,6 +1,9 @@
 {
   "name": "custom-scroll",
-  "version": "0.4.4",
+  "version": "0.4.5",
+  "authors": [
+    "Mostovoy Andrey <mostovoyav@gmail.com>"
+  ],
   "main": [
     "jquery.custom-scroll.js"
   ],
@@ -20,9 +23,6 @@
     "tests"
   ],
   "homepage": "https://github.com/standys/custom-scroll",
-  "authors": [
-    "standy <mostovoyav@gmail.com>"
-  ],
   "keywords": [
 	  "scrollbar",
 	  "customize scrollbar",
