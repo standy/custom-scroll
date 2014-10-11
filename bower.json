@@ -1,18 +1,33 @@
 {
-	"name": "jquery.custom-scroll",
-	"version": "0.4",
-	"main": [
-		"jquery.custom-scroll.js"
-	],
-	"dependencies": {
-		"jquery": ">=1.7"
-	},
-	"ignore": [
-		"test",
-		".*",
-		"*.json",
-		"*.md",
-		"*.txt",
-		"gulpfile.js"
-	]
+  "name": "custom-scroll",
+  "version": "0.4.1",
+  "main": [
+    "jquery.custom-scroll.js"
+  ],
+  "devDependencies": {
+    "jquery": ">=1.7"
+  },
+  "ignore": [
+    "test",
+    ".*",
+    "*.json",
+    "*.md",
+    "*.txt",
+    "gulpfile.js",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "homepage": "https://github.com/standys/custom-scroll",
+  "authors": [
+    "standy <mostovoyav@gmail.com>"
+  ],
+  "keywords": [
+	  "scrollbar",
+	  "customize scrollbar",
+	  "custom-scroll"
+  ],
+  "description": "Customize your scrollbar",
+  "license": "MIT"
 }
