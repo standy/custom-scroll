@@ -31,4 +31,5 @@ To remove custom scroll use 'destroy'
 $(container).customScroll('destroy');
 ```
 
-### Mit License
+## License
+[MIT](https://github.com/standys/custom-scroll/blob/master/LICENSE)
