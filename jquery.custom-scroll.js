@@ -9,14 +9,13 @@
  */
 
 (function($) {
-	/* test */
 	$.fn.customScroll = function(options) {
 		if (options === 'destroy') {
 			this.each(function() {
 				var cs = $(this).data('custom-scroll');
 				if (cs) cs.destroy();
 			});
-			return;
+			return this;
 		}
 		if (this.length===1) return customScroll(this, options);
 		this.each(function() {
@@ -28,7 +27,8 @@
 		prefix: 'custom-scroll_',
 		barMinHeight: 10,
 		barHtml: null,
-		doWrap: true
+		doWrap: true,
+		predefined: false
 	};
 
 	function customScroll($container, options) {
@@ -37,22 +37,28 @@
 
 		if ($container.hasClass(cls('container'))) {
 			var cs = $container.data('custom-scroll');
-			cs.updateBar();
-			return cs;
+			if (cs) {
+				cs.updateBar();
+				return cs;
+			}
 		}
-		$container.addClass(cls('container'));
-		if (options.doWrap) {
-			$container.wrapInner('<div class="'+cls('inner')+'"></div>');
-			var $inner = $container.children();
+		if (options.predefined) {
+			$inner = $container.children().first();
+			$barAndMisc = $container.children().slice(1);
 		} else {
-			//$container.addClass(cls('dont-wrap'));
-			$container.addClass(cls('dont-wrap'));
-			$inner = $container;
-		}
+			$container.addClass(cls('container'));
+			if (options.doWrap) {
+				$container.wrapInner('<div class="'+cls('inner')+'"></div>');
+				var $inner = $container.children();
+			} else {
+				$container.addClass(cls('dont-wrap'));
+				$inner = $container;
+			}
 
-		var barHtml = options.barHtml!=null ? options.barHtml : '<div class="'+cls('bar')+' '+cls('hidden')+'"></div>';
-		var $barAndMisc = $(barHtml);
-		$container.append($barAndMisc);
+			var barHtml = options.barHtml!=null ? options.barHtml : '<div class="'+cls('bar')+' '+cls('hidden')+'"></div>';
+			var $barAndMisc = $(barHtml);
+			$container.append($barAndMisc);
+		}
 		var $bar = $barAndMisc.last();
 
 
@@ -133,5 +139,4 @@
 			return options.prefix+cls;
 		}
 	}
-
 })(jQuery);
