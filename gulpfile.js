@@ -18,7 +18,8 @@ gulp.task('make', function() {
 
 
 gulp.task('default', ['make'], function() {
-    return gulp.src(['./jquery.custom-scroll.css', './jquery.custom-scroll.js', './jquery.custom-scroll.min.js', ])
+    return gulp.src(['./jquery.custom-scroll.css', './jquery.custom-scroll.js', './jquery.custom-scroll.min.js'])
+        .pipe(size({showFiles: true, gzip: false}))
         .pipe(size({showFiles: true, gzip: true}))
 });
 
