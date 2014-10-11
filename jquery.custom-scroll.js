@@ -1,4 +1,15 @@
+/*
+ * jQuery Custom Scroll plugin
+ * https://github.com/standys/custom-scroll
+ *
+ * Copyright 2014, Mostovoy Andrey
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
 (function($) {
+	/* test */
 	$.fn.customScroll = function(options) {
 		if (options === 'destroy') {
 			this.each(function() {
@@ -13,14 +24,15 @@
 		});
 	};
 
-	var defaultOptions = {
-		prefix: 'custom-scroll',
+	$.fn.customScroll.defaultOptions = {
+		prefix: 'custom-scroll_',
 		barMinHeight: 10,
-		barHtml: null
+		barHtml: null,
+		doWrap: true
 	};
 
 	function customScroll($container, options) {
-		options = $.extend({}, defaultOptions, options);
+		options = $.extend({}, $.fn.customScroll.defaultOptions, options);
 		var store;
 
 		if ($container.hasClass(cls('container'))) {
@@ -28,14 +40,20 @@
 			cs.updateBar();
 			return cs;
 		}
+		$container.addClass(cls('container'));
+		if (options.doWrap) {
+			$container.wrapInner('<div class="'+cls('inner')+'"></div>');
+			var $inner = $container.children();
+		} else {
+			//$container.addClass(cls('dont-wrap'));
+			$container.addClass(cls('dont-wrap'));
+			$inner = $container;
+		}
+
 		var barHtml = options.barHtml!=null ? options.barHtml : '<div class="'+cls('bar')+' '+cls('hidden')+'"></div>';
 		var $barAndMisc = $(barHtml);
-		$container
-			.addClass(cls('container'))
-			.wrapInner('<div class="'+cls('inner')+'"></div>')
-			.append($barAndMisc);
+		$container.append($barAndMisc);
 		var $bar = $barAndMisc.last();
-		var $inner = $container.children('.' + cls('inner'));
 
 
 		var $body = $('body');
@@ -93,8 +111,9 @@
 			}
 			var scrollTop = $inner.scrollTop();
 			var barTop = scrollTop*c.ratio;
+			if (!options.doWrap) barTop += scrollTop;
 			if (barTop<0) barTop = 0;
-			if (barTop>c.height-c.barHeight) barTop = c.height-c.barHeight;
+			if (options.doWrap) if (barTop>c.height-c.barHeight) barTop = c.height-c.barHeight;
 			$bar
 				.height(c.barHeight)
 				.css('top', barTop);
@@ -102,12 +121,17 @@
 		function destroy() {
 			$barAndMisc.remove();
 			$container.removeClass(cls('container')).removeData('custom-scroll');
-			$inner.contents().appendTo($container);
-			$inner.remove();
+			if (options.doWrap) {
+				$inner.contents().appendTo($container);
+				$inner.remove();
+			} else {
+				$container.removeClass(cls('dont-wrap'));
+			}
 		}
 
 		function cls(cls) {
-			return options.prefix+'_'+cls;
+			return options.prefix+cls;
 		}
 	}
+
 })(jQuery);

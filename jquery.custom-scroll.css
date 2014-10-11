@@ -3,13 +3,17 @@
 	position: relative;
 	padding-right: 0 !important;
 }
-.custom-scroll_inner {
+
+.custom-scroll_container > .custom-scroll_inner {
 	overflow-y: scroll;
 	overflow-x: hidden;
-	margin-right: -20px;
-	padding-right: 20px;
+	margin-right: -17px;
 	height: 100%;
 }
+.custom-scroll_dont-wrap {
+	overflow-y: scroll !important;
+}
+
 .custom-scroll_bar {
 	cursor: default;
 	position: absolute;
@@ -27,7 +31,8 @@
 	     -o-user-select: none;
 	        user-select: none;
 
-	opacity: .5;
+	opacity: .4;
+	/*transition: opacity .05s*/
 }
 .custom-scroll_bar:hover {
 	opacity: .7;
