@@ -4,7 +4,18 @@ var rename = require('gulp-rename');
 var size = require('gulp-size');
 
 
-gulp.task('make', function() {
+
+gulp.task('copy-js', function() {
+    return gulp.src(['./jquery.custom-scroll.js'])
+        .pipe(gulp.dest('./custom-scroll/js'));
+});
+gulp.task('copy-css', function() {
+    return gulp.src(['./jquery.custom-scroll.css'])
+        .pipe(gulp.dest('./custom-scroll/css'));
+});
+
+
+gulp.task('min', function() {
 
     return gulp.src(['./jquery.custom-scroll.js'])
         .pipe(uglify({
@@ -15,6 +26,7 @@ gulp.task('make', function() {
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./'));
 });
+gulp.task('make', ['min', 'copy-css', 'copy-js']);
 
 
 gulp.task('default', ['make'], function() {
@@ -24,5 +36,6 @@ gulp.task('default', ['make'], function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./jquery.custom-scroll.js', ['default']);
+    gulp.watch('./jquery.custom-scroll.js', ['make']);
+    gulp.watch('./jquery.custom-scroll.css', ['make']);
 });
