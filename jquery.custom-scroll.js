@@ -26,11 +26,16 @@
     $.fn.customScroll.defaultOptions = {
         prefix: 'custom-scroll_',
         barMinHeight: 10,
-        barHtml: '<div />'
+	    offsetTop: 0,
+	    offsetBottom: 0,
+	    barHtml: '<div />'
     };
 
     function customScroll($container, options) {
-        options = $.extend({}, $.fn.customScroll.defaultOptions, options);
+        var cs = $container.data('custom-scroll');
+        if (cs) options = cs.options;
+        else options = $.extend({}, $.fn.customScroll.defaultOptions, options);
+
         var isBarHidden;
 
         if ($container.hasClass(options.prefix + 'container')) {
@@ -45,6 +50,8 @@
         if (!$inner.length) {
             $inner = $container.wrapInner('<div class="' + options.prefix + 'inner' + '"></div>').children();
         }
+	    var scrollWidth = $inner[0].offsetWidth - $inner[0].clientWidth;
+	    $inner.css('marginRight', -scrollWidth + 'px');
         var $bar = $container.children('.' + options.prefix + 'bar');
         if (!$bar.length) {
             $bar = $(options.barHtml).addClass(options.prefix + 'bar').appendTo($container);
@@ -77,7 +84,8 @@
             $bar: $bar,
             $inner: $inner,
             destroy: destroy,
-            updateBar: updateBar
+            updateBar: updateBar,
+            options: options
         };
         $container.data('custom-scroll', data);
         return data;
@@ -86,13 +94,15 @@
         function getHeights() {
             var heightTotal = $inner.prop('scrollHeight') | 0;
             var height = $container.innerHeight();
+            var heightScroll = height - options.offsetTop - options.offsetBottom;
 
-            var barHeight = Math.max((height * height / heightTotal) | 0, options.barMinHeight);
-            var ratio = (height - barHeight) / (heightTotal - height);
+            var barHeight = Math.max((heightScroll * height / heightTotal) | 0, options.barMinHeight);
+            var ratio = (heightScroll - barHeight) / (heightTotal - height);
 
             return {
                 ratio: ratio,
                 height: height,
+	            heightScroll: heightScroll,
                 heightTotal: heightTotal,
                 barHeight: barHeight
             }
@@ -100,18 +110,18 @@
 
         function updateBar() {
             var y = getHeights();
-            var isHide = y.barHeight >= y.height;
+            var isHide = y.barHeight >= y.heightScroll;
             if (isHide !== isBarHidden) {
-                $bar.toggleClass(options.prefix + 'hidden', isHide);
+                $container.toggleClass(options.prefix + 'hidden', isHide);
                 isBarHidden = isHide;
             }
             var scrollTop = $inner.scrollTop();
             var barPos = scrollTop * y.ratio;
             if (barPos < 0) barPos = 0;
-            if (barPos > y.height - y.barHeight) barPos = y.height - y.barHeight;
+            if (barPos > y.heightScroll - y.barHeight) barPos = y.heightScroll - y.barHeight;
             $bar
                 .height(y.barHeight)
-                .css('top', barPos);
+                .css('top', options.offsetTop + barPos);
         }
 
         function destroy() {
