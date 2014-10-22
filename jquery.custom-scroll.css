@@ -10,9 +10,8 @@
 	padding-right: 15px;
 	height: 100%;
 }
-.custom-scroll_dont-wrap {
-	overflow-y: scroll !important;
-}
+.custom-scroll_container > .custom-scroll_inner::-webkit-scrollbar { width: 0; }
+.custom-scroll_container > .custom-scroll_inner{ -ms-overflow-style: none; }
 
 .custom-scroll_bar {
 	cursor: default;
@@ -23,7 +22,7 @@
 	z-index: 1;
 	width: 8px;
 	height: 20px;
-	background: #888;
+	background: #cfcfcf;
 
 	-webkit-user-select: none;
 	 -khtml-user-select: none;
@@ -31,20 +30,20 @@
 	     -o-user-select: none;
 	        user-select: none;
 
-	opacity: .4;
+	transition: background .2s;
 }
 
 .custom-scroll_bar:hover {
-	opacity: .7;
+	background: #aaa;
 }
 .custom-scroll_bar:active {
-	opacity: 1;
+	background: #888;
 }
 
-.custom-scroll-tiny_hidden > .custom-scroll-tiny_bar {
+.custom-scroll_hidden > .custom-scroll_bar {
 	opacity: 0;
 	height: 100%;
 	top: 0;
 	visibility: hidden;
-	transition: opacity .3s, height .3s, top .1s, visibility step-end .3s;
+	transition: opacity .2s, height .2s, top .1s, visibility step-end .3s;
 }
