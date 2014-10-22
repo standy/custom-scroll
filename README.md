@@ -1,6 +1,6 @@
 #Customize your scroollbar
 JQuery plugin for customizing a scrollbar via css and js  
-Watch the [example](http://standys.github.io/custom-scroll/examples.html) page
+Watch the [example](http://standys.github.io/custom-scroll/) page
  
 Dont forget to include styles on your page
 
