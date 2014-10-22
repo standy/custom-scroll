@@ -14,7 +14,7 @@
     "jquery": ">=1.7"
   },
   "homepage": "https://github.com/standys/custom-scroll",
-  "demo": "http://standys.github.io/custom-scroll/examples.html",
+  "demo": "http://standys.github.io/custom-scroll",
   "download": "https://raw.githubusercontent.com/standys/custom-scroll/master/jquery.custom-scroll.js",
 
   "description": "Customize your scrollbar",
