@@ -1,13 +1,4 @@
-/* jQuery Custom Scroll plugin | (c) 2014 Mostovoy Andrey | https://github.com/standys/custom-scroll/blob/master/LICENSE */
-/*
- * jQuery Custom Scroll plugin
- * https://github.com/standys/custom-scroll
- *
- * Copyright 2014, Mostovoy Andrey
- *
- * Licensed under the MIT license:
- * https://github.com/standys/custom-scroll/blob/master/LICENSE
- */
+/* jQuery Custom Scroll plugin v0.5.2 | (c) 2014 Mostovoy Andrey | https://github.com/standys/custom-scroll/blob/master/LICENSE */
 (function($) {
 	$.fn.customScroll = function(options) {
 		if (options==='destroy') {

@@ -1,6 +1,6 @@
 {
   "name": "custom-scroll",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Customize your scrollbar",
   "author": "Mostovoy Andrey <mostovoyav@gmail.com>",
   "repository": {
@@ -17,6 +17,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp-rename": "^1.2.0",
+    "gulp-template": "^1.1.1",
     "gulp-uglify": "^1.0.1"
   },
   "license": "MIT"
