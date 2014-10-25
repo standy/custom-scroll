@@ -3,6 +3,8 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var size = require('gulp-size');
 var template = require('gulp-template');
+var prism = require('./prism.js');
+var fs = require('fs');
 
 
 var sizes = {};
@@ -46,21 +48,45 @@ gulp.task('copy-css', function() {
 gulp.task('watch', function() {
     gulp.watch('./jquery.custom-scroll.js', ['copy-js']);
     gulp.watch('./jquery.custom-scroll.css', ['copy-css']);
+    gulp.watch('./custom-scroll/index.src.html', ['index']);
 });
 
 
 
-gulp.task('default', ['min', 'sizes'], function() {
+gulp.task('index', ['min', 'sizes'], function() {
+	var data = {
+		sizes: sizes,
+		files: {}
+	};
+	var types = {
+		js: 'javascript',
+		css: 'css',
+		html: 'markup'
+	};
+	[
+		'codes/include.html',
+		'codes/how-it-works.html',
+		'codes/init.js',
+		'codes/api.js',
+		'css/jquery.custom-scroll-tiny.css',
+		'js/example-advanced.js'
+	]
+		.forEach(function(filename) {
+			var file = fs.readFileSync('custom-scroll/' + filename, 'utf8');
+			var type = filename.split('.').pop();
+
+			var filePrism = prism.highlight(file, prism.languages[types[type]]);
+			var filePrismNum = '<ol><li>' + filePrism.split('\n</span>').join('</span>\n').split('\n').join('</li><li>') + '</li></ol>';
+			data.files[filename] = filePrismNum;
+		});
 	return gulp.src('./custom-scroll/index.src.html')
-		.pipe(template({sizes: sizes}))
+		.pipe(template(data))
 		.pipe(rename('index.html'))
 		.pipe(gulp.dest('./custom-scroll'));
 });
 
 
-
-gulp.task('copy', function() {
-	return gulp.src(['./custom-scroll/**'])
+gulp.task('default', ['min', 'sizes', 'index'], function() {
+	return gulp.src(['./custom-scroll/**', '!./custom-scroll/index.src.html', '!./custom-scroll/codes', '!./custom-scroll/codes/**'])
 		.pipe(gulp.dest('./../standys.github.io/custom-scroll'));
 });
-
