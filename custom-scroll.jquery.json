@@ -1,6 +1,6 @@
 {
   "name": "custom-scroll",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "title": "Customize your scrollbar",
   "author": {
     "name" : "Mostovoy Andrey",
@@ -20,6 +20,7 @@
   "description": "Customize your scrollbar",
   "keywords": [
 	  "scrollbar",
+      "native scrollbar",
 	  "customize",
 	  "custom-scroll"
   ],
