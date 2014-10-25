@@ -8,7 +8,12 @@ var fs = require('fs');
 
 var es = require('event-stream');
 var rseq = require('gulp-run-sequence');
+var ghpages = require('gulp-gh-pages');
 
+gulp.task('deploy', function () {
+	return gulp.src('./example/**/*')
+		.pipe(ghpages());
+});
 
 gulp.task('min', function() {
     return gulp.src(['./jquery.custom-scroll.js'])
