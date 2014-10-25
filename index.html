@@ -7,20 +7,19 @@
 	<meta name="description" content="Customize your scrollbar via css and js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="../example/css/bootstrap-yeti.min.css">
-	<link rel="stylesheet" href="../example/css/prism.css">
+	<link rel="stylesheet" href="css/bootstrap-yeti.min.css">
+	<link rel="stylesheet" href="css/prism.css">
 	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<!--<link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
-	<link rel="stylesheet" href="../example/css/jquery.custom-scroll.css">
-	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-tiny.css">
-	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-pretty.css">
-	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-advanced.css">
-	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-guts.css">
+	<link rel="stylesheet" href="css/jquery.custom-scroll.css">
+	<link rel="stylesheet" href="css/jquery.custom-scroll-tiny.css">
+	<link rel="stylesheet" href="css/jquery.custom-scroll-pretty.css">
+	<link rel="stylesheet" href="css/jquery.custom-scroll-advanced.css">
+	<link rel="stylesheet" href="css/jquery.custom-scroll-guts.css">
 
-	<link rel="stylesheet" href="../example/css/page.css">
+	<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
-
 
 <div class="navbar navbar-default" role="navigation">
 	<div class="container">
@@ -85,53 +84,13 @@
 
 			<h2>Usage</h2>
 			<p>To init custom-scroll, include files on your page, and init on desired elements</p>
-			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll CSS --></span>
-</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>link</span> <span class="token attr-name" >rel</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>stylesheet<span class="token punctuation" >"</span></span> <span class="token attr-name" >href</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>css/jquery.custom-scroll.css<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span> 
-</li><li> 
-</li><li><span class="token comment" spellcheck="true">&lt;!-- jQuery 1.7.0+ --></span>
-</li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span>
-</li><li> 
-</li><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll JS --></span>
-</li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.custom-scroll.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span></li></ol></code></pre>
-			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">//Custom-scroll init example
-</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll CSS --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>link</span> <span class="token attr-name" >rel</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>stylesheet<span class="token punctuation" >"</span></span> <span class="token attr-name" >href</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>css/jquery.custom-scroll.css<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span> </li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- jQuery 1.7.0+ --></span></li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span></li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll JS --></span></li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.custom-scroll.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span></li></ol></code></pre>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">//Custom-scroll init example</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
 
 
 			<h2>Options</h2>
 			<p>There is some options you may need:</p>
-			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">// Full list of options with default values
-</span></li><li><span class="token comment" spellcheck="true">// All options are optional
-</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >{</span>
-</li><li>  prefix<span class="token punctuation" >:</span> <span class="token string" >'custom-scroll_'</span><span class="token punctuation" >,</span>
-</li><li>
-</li><li>  <span class="token comment" spellcheck="true">/* vertical */</span>
-</li><li>  barMinHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span>
-</li><li>  offsetTop<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
-</li><li>  offsetBottom<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
-</li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetBottom in case of horizontal scroll */</span>
-</li><li>  trackWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span>
-</li><li>
-</li><li>  <span class="token comment" spellcheck="true">/* horizontal */</span>
-</li><li>  barMinWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span>
-</li><li>  offsetLeft<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
-</li><li>  offsetRight<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
-</li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetRight in case of vertical scroll */</span>
-</li><li>  trackHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span>
-</li><li>
-</li><li>  barHtml<span class="token punctuation" >:</span> <span class="token string" >'&lt;div />'</span>
-</li><li><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-</li><li>
-</li><li>
-</li><li><span class="token comment" spellcheck="true">// To recalculate bar position use same method without options
-</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-</li><li>
-</li><li>
-</li><li><span class="token comment" spellcheck="true">// If you need to remove custom-scroll there is 'destroy' method
-</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token string" >'destroy'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-</li><li>
-</li><li>
-</li><li><span class="token comment" spellcheck="true">// To change/get default options use
-</span></li><li>$<span class="token punctuation" >.</span>fn<span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span>someOptions<span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">// Full list of options with default values</span></li><li><span class="token comment" spellcheck="true">// All options are optional</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >{</span></li><li>  prefix<span class="token punctuation" >:</span> <span class="token string" >'custom-scroll_'</span><span class="token punctuation" >,</span></li><li></li><li>  <span class="token comment" spellcheck="true">/* vertical */</span></li><li>  barMinHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li>  offsetTop<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  offsetBottom<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetBottom in case of horizontal scroll */</span></li><li>  trackWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li></li><li>  <span class="token comment" spellcheck="true">/* horizontal */</span></li><li>  barMinWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li>  offsetLeft<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  offsetRight<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetRight in case of vertical scroll */</span></li><li>  trackHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li></li><li>  barHtml<span class="token punctuation" >:</span> <span class="token string" >'&lt;div />'</span></li><li><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// To recalculate bar position use same method without options</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// If you need to remove custom-scroll there is 'destroy' method</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token string" >'destroy'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// To change/get default options use</span></li><li>$<span class="token punctuation" >.</span>fn<span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span>someOptions<span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
 			<!--<p class="alert alert-info">
 				To update bar height/position on container/content change, just call customScroll again.<br />
 				Anyway it will be updated on next scroll event.
@@ -143,23 +102,7 @@
 				If there is already elements with those classes, they will be used</p>
 			<div class="row">
 				<div class="col-md-8">
-					<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- before --></span>
-</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
-</li><li>  ...
-</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-</li><li> 
-</li><li><span class="token comment" spellcheck="true">&lt;!-- after: adds class --></span>
-</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_container<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>
-</li><li>  
-</li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds inner --></span>
-</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_inner<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>
-</li><li>    ...
-</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-</li><li>  
-</li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds barHtml from options with class --></span>
-</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar-x<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li></ol></code></pre>
+					<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- before --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span></li><li>  ...</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- after: adds class --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_container<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></li><li>  </li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds inner --></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_inner<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></li><li>    ...</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li>  </li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds barHtml from options with class --></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar-x<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li></ol></code></pre>
 				</div>
 
 				<div class="col-md-4">
@@ -204,7 +147,7 @@
 								<p><b>Pretty</b></p>
 								<p>
 									Track added by html+css<br />
-									<a href="../example/css/jquery.custom-scroll-pretty.css">view css</a>
+									<a href="css/jquery.custom-scroll-pretty.css">view css</a>
 								</p>
 								<br />
 								<div class="lorem"></div>
@@ -218,7 +161,7 @@
 							<p><b>Invisible</b></p>
 							<p>
 								Bar appear only on hover<br />
-								<a href="../example/css/jquery.custom-scroll-tiny.css">view css</a>
+								<a href="css/jquery.custom-scroll-tiny.css">view css</a>
 							</p>
 							<br />
 							<div class="lorem"></div>
@@ -276,8 +219,8 @@
 						<br />
 						<b>Advanced</b><br />
 						Track is clickable<br />
-						<a href="../example/css/jquery.custom-scroll-advanced.css">view css</a><br />
-						<a href="../example/js/example-advanced.js">view js</a>
+						<a href="css/jquery.custom-scroll-advanced.css">view css</a><br />
+						<a href="js/example-advanced.js">view js</a>
 						<br />
 						<br />
 						<div class="lorem"></div>
@@ -304,11 +247,11 @@
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../example/js/jquery.min.js"><\/script>')</script>
-<script src="../example/js/bootstrap.min.js"></script>
-<script src="../example/js/jquery.custom-scroll.js"></script>
-<script src="../example/js/page.js"></script>
-<script src="../example/js/example-advanced.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.custom-scroll.js"></script>
+<script src="js/page.js"></script>
+<script src="js/example-advanced.js"></script>
 
 
 <script>
