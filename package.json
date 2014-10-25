@@ -16,7 +16,10 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "event-stream": "^3.1.7",
+    "gulp": "^3.8.9",
     "gulp-rename": "^1.2.0",
+    "gulp-run-sequence": "^0.3.2",
     "gulp-template": "^1.1.1",
     "gulp-uglify": "^1.0.1"
   },

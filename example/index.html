@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Custom scroll examples page</title>
+	<meta name="description" content="Customize your scrollbar via css and js">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="../example/css/bootstrap-yeti.min.css">
+	<link rel="stylesheet" href="../example/css/prism.css">
+	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+	<!--<link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
+	<link rel="stylesheet" href="../example/css/jquery.custom-scroll.css">
+	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-tiny.css">
+	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-pretty.css">
+	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-advanced.css">
+	<link rel="stylesheet" href="../example/css/jquery.custom-scroll-guts.css">
+
+	<link rel="stylesheet" href="../example/css/page.css">
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<h1 class="navbar-h1">JQuery plugin for cross-browser customization of native scrollbar</h1>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-push-8">
+			<div class="well sidebar-content" data-spy="affix" data-offset-top="87" data-offset-bottom="196">
+				<h2>Downloads</h2>
+				<p>
+					<a href="https://raw.githubusercontent.com/standys/custom-scroll/master/jquery.custom-scroll.js">jquery.custom-scroll.js</a>
+                    <br />5.61 kB (1.82 kB gzipped)
+				</p>
+				<p>
+					<a href="https://raw.githubusercontent.com/standys/custom-scroll/master/jquery.custom-scroll.min.js">jquery.custom-scroll.min.js</a>
+                    <br />3 kB (1.31 kB gzipped)
+				</p>
+				<p>
+					<a href="https://raw.githubusercontent.com/standys/custom-scroll/master/jquery.custom-scroll.css">jquery.custom-scroll.css</a>
+                    <br />1.08 kB (429 B gzipped)
+				</p>
+				<br />
+				<p>
+					<b>Links</b><br />
+					<a href="https://github.com/standys/custom-scroll">GitHub page</a><br />
+					<a href="https://github.com/standys/custom-scroll/issues">Issues page</a>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-8 col-md-pull-4">
+			<p>
+				Its a simple, fast, lightweight (~2kB) plugin for jQuery 1.7+<br />
+				that allows to control bar view using css.
+			</p>
+			<p>
+				+ Supporting touch, wheel, middle button and any kind of scrolling<br />
+				+ As fast as native<br />
+				+ Weight incredible small<br />
+				+ Tested with IE7+, mobile and modern browsers
+			</p>
+			<h2>Example</h2>
+			<div class="cs-example">
+				<div class="test-box" id="example">
+					<div class="lorem"></div>
+				</div>
+				<div class="cs-controls" data-test="#example">
+					<span class="btn btn-sm btn-primary example-add-content">Add content</span>
+					<span class="btn btn-sm btn-warning example-remove-content">Remove content</span>
+					<span class="btn btn-sm btn-info    example-no-wrap">Word wrap toggle</span>
+					<span class="btn btn-sm btn-success example-init">Init</span>
+					<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>
+					<!--<label class="checkbox"><input type="checkbox" class="example-init-flag" checked> Re-init after content change</label>-->
+				</div>
+			</div>
+
+
+
+			<h2>Usage</h2>
+			<p>To init custom-scroll, include files on your page, and init on desired elements</p>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll CSS --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>link</span> <span class="token attr-name" >rel</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>stylesheet<span class="token punctuation" >"</span></span> <span class="token attr-name" >href</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>css/jquery.custom-scroll.css<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span> </li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- jQuery 1.7.0+ --></span></li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span></li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- Custom-scroll JS --></span></li><li><span class="token script" ><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>js/jquery.custom-scroll.js<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>script</span><span class="token punctuation" >></span></span></span></li></ol></code></pre>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">//Custom-scroll init example</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
+
+
+			<h2>Options</h2>
+			<p>There is some options you may need:</p>
+			<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">// Full list of options with default values</span></li><li><span class="token comment" spellcheck="true">// All options are optional</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >{</span></li><li>  prefix<span class="token punctuation" >:</span> <span class="token string" >'custom-scroll_'</span><span class="token punctuation" >,</span></li><li></li><li>  <span class="token comment" spellcheck="true">/* vertical */</span></li><li>  barMinHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li>  offsetTop<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  offsetBottom<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetBottom in case of horizontal scroll */</span></li><li>  trackWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li></li><li>  <span class="token comment" spellcheck="true">/* horizontal */</span></li><li>  barMinWidth<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li>  offsetLeft<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  offsetRight<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span></li><li>  <span class="token comment" spellcheck="true">/* will be added to offsetRight in case of vertical scroll */</span></li><li>  trackHeight<span class="token punctuation" >:</span> <span class="token number" >10</span><span class="token punctuation" >,</span></li><li></li><li>  barHtml<span class="token punctuation" >:</span> <span class="token string" >'&lt;div />'</span></li><li><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// To recalculate bar position use same method without options</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// If you need to remove custom-scroll there is 'destroy' method</span></li><li>$<span class="token punctuation" >(</span><span class="token string" >'#example'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span><span class="token string" >'destroy'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span></li><li></li><li></li><li><span class="token comment" spellcheck="true">// To change/get default options use</span></li><li>$<span class="token punctuation" >.</span>fn<span class="token punctuation" >.</span><span class="token function" >customScroll<span class="token punctuation" >(</span></span>someOptions<span class="token punctuation" >)</span><span class="token punctuation" >;</span></li></ol></code></pre>
+			<!--<p class="alert alert-info">
+				To update bar height/position on container/content change, just call customScroll again.<br />
+				Anyway it will be updated on next scroll event.
+			</p>-->
+
+
+			<h2>How it works</h2>
+			<p>After you init custom-scroll, it adds class to container, and makes new inner and bar<br />
+				If there is already elements with those classes, they will be used</p>
+			<div class="row">
+				<div class="col-md-8">
+					<pre class="prism"><code><ol><li><span class="token comment" spellcheck="true">&lt;!-- before --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span></li><li>  ...</li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li> </li><li><span class="token comment" spellcheck="true">&lt;!-- after: adds class --></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_container<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></li><li>  </li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds inner --></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_inner<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span></li><li>    ...</li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li>  </li><li>  <span class="token comment" spellcheck="true">&lt;!-- adds barHtml from options with class --></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li>  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span> <span class="token attr-name" >class</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>custom-scroll_bar-x<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li><li><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span></li></ol></code></pre>
+				</div>
+
+				<div class="col-md-4">
+					<div class="cs-example">
+						<p>Init custom-scroll to see demo</p>
+						<div class="test-box guts no-wrap" id="example-guts">
+							<div class="lorem">
+								<p>Sed do eiusmod tempor incididunt. Duis aute irure dolor in reprehenderit, sed ut perspiciatis.</p>
+								<p>Ut aliquip ex ea commodo consequat. Sed ut perspiciatis. Explicabo, et quasi architecto beatae vitae dicta sunt.</p>
+								<p>Ut aliquip ex ea commodo consequat, neque porro quisquam est, accusantium doloremque laudantium, nemo enim ipsam voluptatem.</p>
+								<p>Sunt in culpa qui officia. Sed do eiusmod tempor incididunt, nemo enim ipsam voluptatem.</p>
+								<p>In voluptate velit esse cillum dolore, consectetur adipisicing elit, unde omnis iste natus error sit voluptatem.</p>
+								<p>Sunt in culpa qui officia, nemo enim ipsam voluptatem, aspernatur aut odit aut fugit, duis aute irure dolor in reprehenderit, sed ut perspiciatis.</p>
+								<p>Quia voluptas sit. Quia voluptas sit, excepteur sint occaecat cupidatat non proident, ut labore et dolore magna aliqua, explicabo.</p>
+								<p>sed do eiusmod tempor incididunt, unde omnis iste natus error sit voluptatem, in voluptate velit esse cillum dolore</p>
+								<p>In voluptate velit esse cillum dolore, consectetur adipisicing elit, unde omnis iste natus error sit voluptatem.</p>
+								<p>Sed do eiusmod tempor incididunt. Duis aute irure dolor in reprehenderit, sed ut perspiciatis.</p>
+							</div>
+						</div>
+						<div class="cs-controls" data-test="#example-guts" data-options='{"prefix": "custom-scroll-guts_"}'>
+							<span class="btn btn-sm btn-success example-init">Init</span>
+							<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>
+							<!--<span class="btn btn-sm btn-info    example-no-wrap">Toggle</span>-->
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<h2>Themes</h2>
+			<p>Customize scroll any way you want using CSS</p>
+			<div class="cs-example">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="test-box custom-scroll-pretty_container" id="example-pretty">
+							<div class="custom-scroll-pretty_track"></div>
+							<div class="custom-scroll-pretty_track-x"></div>
+							<div class="custom-scroll-pretty_inner">
+								<p><b>Pretty</b></p>
+								<p>
+									Track added by html+css<br />
+									<a href="../example/css/jquery.custom-scroll-pretty.css">view css</a>
+								</p>
+								<br />
+								<div class="lorem"></div>
+							</div>
+							<div class="custom-scroll-pretty_bar"></div>
+							<div class="custom-scroll-pretty_bar-x"></div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="test-box" id="example-tiny">
+							<p><b>Invisible</b></p>
+							<p>
+								Bar appear only on hover<br />
+								<a href="../example/css/jquery.custom-scroll-tiny.css">view css</a>
+							</p>
+							<br />
+							<div class="lorem"></div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="test-box" id="example-native">
+							<p><b>Native</b><br /></p>
+							<p>Just to compare</p>
+							<br />
+							<br />
+							<div class="lorem"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="cs-controls" data-test="#example-tiny,#example-pretty,#example-native">
+					<span class="btn btn-sm btn-primary example-add-content">Add content</span>
+					<span class="btn btn-sm btn-warning example-remove-content">Remove content</span>
+					<span class="btn btn-sm btn-info    example-no-wrap">Word wrap toggle</span>
+					<!--<span class="btn btn-sm btn-success example-init">Init</span>-->
+					<!--<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>-->
+					<!--<label class="checkbox"><input type="checkbox" class="example-init-flag" checked> Re-init after content change</label>-->
+				</div>
+			</div>
+
+
+			<h2>Textarea</h2>
+			<p>Usable with textarea either</p>
+			<div class="cs-example">
+				<div class="test-box textarea custom-scroll_container" id="example-textarea">
+					<textarea class="custom-scroll_inner lorem" cols="80" rows="10"></textarea>
+					<div class="custom-scroll_bar"></div>
+				</div>
+				<div class="cs-controls" data-test="#example-textarea">
+					<span class="btn btn-sm btn-primary example-add-content">Add content</span>
+					<span class="btn btn-sm btn-warning example-remove-content">Remove content</span>
+					<!--<span class="btn btn-sm btn-info    example-no-wrap">Word wrap toggle</span>-->
+					<!--<span class="btn btn-sm btn-success example-init">Init</span>-->
+					<!--<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>-->
+					<!--<label class="checkbox"><input type="checkbox" class="example-init-flag" checked> Re-init after content change</label>-->
+				</div>
+			</div>
+
+
+
+
+			<h2>Advanced usage</h2>
+			<p>Custom-scroll is listening the <code>scroll</code> event at inner element, so you can use
+				jQuery <code>scrollTop</code> method to control position.</p>
+			<p>That will help if you want more advanced scroll like in example below</p>
+			<div class="cs-example">
+				<div class="test-box custom-scroll-advanced_container" id="example-advanced">
+					<div class="custom-scroll-advanced_inner">
+						<br />
+						<b>Advanced</b><br />
+						Track is clickable<br />
+						<a href="../example/css/jquery.custom-scroll-advanced.css">view css</a><br />
+						<a href="../example/js/example-advanced.js">view js</a>
+						<br />
+						<br />
+						<div class="lorem"></div>
+					</div>
+					<div class="custom-scroll-advanced_track"><span class="arrow top"></span><span class="arrow bottom"></span></div>
+					<div class="custom-scroll-advanced_bar"></div>
+				</div>
+				<div class="cs-controls" data-test="#example-advanced">
+					<span class="btn btn-sm btn-primary example-add-content">Add content</span>
+					<span class="btn btn-sm btn-warning example-remove-content">Remove content</span>
+					<!--<span class="btn btn-sm btn-info    example-no-wrap">Word wrap toggle</span>-->
+					<!--<span class="btn btn-sm btn-success example-init">Init</span>-->
+					<!--<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>-->
+					<!--<label class="checkbox"><input type="checkbox" class="example-init-flag" checked> Re-init after content change</label>-->
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="cs-footer container">
+	<p class="pull-left">Mit License</p>
+	<p class="pull-right">standy © 2014</p>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../example/js/jquery.min.js"><\/script>')</script>
+<script src="../example/js/bootstrap.min.js"></script>
+<script src="../example/js/jquery.custom-scroll.js"></script>
+<script src="../example/js/page.js"></script>
+<script src="../example/js/example-advanced.js"></script>
+
+
+<script>
+    (function(s,t,a,n,d,y){s.GoogleAnalyticsObject=n;s[n]||(s[n]=
+    function(){(s[n].q=s[n].q||[]).push(arguments)});s[n].l=+new Date;
+    d=t.createElement(a);y=t.getElementsByTagName(a)[0];
+    d.src='//www.google-analytics.com/analytics.js';
+    y.parentNode.insertBefore(d,y)}(window,document,'script','ga'));
+    ga('create','UA-33261217-3','auto');ga('send','pageview');
+</script>
+
+</body>
+</html>
