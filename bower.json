@@ -23,13 +23,14 @@
     "bower_components",
     "tests"
   ],
-  "homepage": "https://github.com/standys/custom-scroll",
+  "homepage": "https://github.com/standy/custom-scroll",
   "keywords": [
+	  "jquery-plugin",
 	  "scrollbar",
 	  "native scrollbar",
 	  "customize scrollbar",
 	  "custom-scroll"
   ],
-  "description": "Customize your scrollbar",
+  "description": "Customize your scrollbar with native scrolling",
   "license": "MIT"
 }

@@ -9,7 +9,7 @@ that allows to control bar view using css.
 \+ Tested with IE7+, mobile and modern browsers 
 
 
-Watch the [example](http://standys.github.io/custom-scroll/) page
+Watch the [example](http://standy.github.io/custom-scroll/) page
 
  
 ## Usage
@@ -54,4 +54,4 @@ Element for bar:
 
 
 ## License
-[MIT](https://github.com/standys/custom-scroll/blob/master/LICENSE)
+[MIT](https://github.com/standy/custom-scroll/blob/master/LICENSE)

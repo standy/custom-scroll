@@ -1,18 +1,21 @@
 {
   "name": "custom-scroll",
   "version": "0.6.1",
-  "description": "Customize your scrollbar",
+  "description": "Customize your scrollbar with native scrolling",
   "author": "Mostovoy Andrey <mostovoyav@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/standys/custom-scroll"
+    "url": "https://github.com/standy/custom-scroll"
   },
   "bugs": {
-    "url": "https://github.com/standys/custom-scroll/issues"
+    "url": "https://github.com/standy/custom-scroll/issues"
   },
   "keywords": [
-    "custom scrollbar",
-    "scrollbar"
+    "jquery-plugin",
+    "scrollbar",
+    "native scrollbar",
+    "customize scrollbar",
+    "custom-scroll"
   ],
   "dependencies": {},
   "devDependencies": {
