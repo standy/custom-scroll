@@ -1,6 +1,6 @@
 {
   "name": "custom-scroll",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "authors": [
     "Mostovoy Andrey <mostovoyav@gmail.com>"
   ],
@@ -18,7 +18,8 @@
     "*.txt",
     "gulpfile.js",
     "**/.*",
-    "example*/**/*",
+    "example*",
+    "example**/*",
     "node_modules",
     "bower_components",
     "tests"
