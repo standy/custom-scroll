@@ -102,7 +102,7 @@ gulp.task('index', ['min', 'sizes'], function() {
 });
 
 
-gulp.task('default', ['min', 'sizes', 'index']);
+gulp.task('default', ['min', 'sizes', 'copy-js', 'copy-css', 'index']);
 
 
 

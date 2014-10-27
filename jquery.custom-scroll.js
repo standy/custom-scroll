@@ -54,8 +54,11 @@
 		}
 
 		$container.addClass(options.prefix+'container');
-		var scrollWidth = $inner[0].offsetWidth-$inner[0].clientWidth;
-		var scrollHeight = $inner[0].offsetHeight-$inner[0].clientHeight;
+		// scroll dimensions in case of hidden element
+		var tmp = $('<div class="'+ options.prefix+'inner" />').appendTo('body').css({overflow:'scroll'})[0];
+		var scrollWidth = tmp.offsetWidth-tmp.clientWidth;
+		var scrollHeight = tmp.offsetHeight-tmp.clientHeight;
+		tmp.parentElement.removeChild(tmp);
 		$inner.css({
 			/* save the padding */
 			'paddingLeft': $container.css('paddingLeft'),
