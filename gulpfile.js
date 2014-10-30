@@ -31,6 +31,8 @@ gulp.task('watch', function() {
     gulp.watch('./jquery.custom-scroll.js', ['copy-js']);
     gulp.watch('./jquery.custom-scroll.css', ['copy-css']);
     gulp.watch('./example-src/index.html', ['index']);
+    gulp.watch('./example-src/css/**', ['copy']);
+    gulp.watch('./example-src/js/**', ['copy']);
 });
 
 
