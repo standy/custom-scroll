@@ -208,6 +208,24 @@
 
 
 
+			<h2>Hidden and max-height elements</h2>
+			<p>Works fine</p>
+			<div class="cs-example">
+				<div class="test-box hard" id="example-hard" style="display: none;">
+					<div class="lorem"></div>
+				</div>
+				<div class="cs-controls" data-test="#example-hard">
+					<span class="btn btn-sm btn-info example-toggle">Show</span>
+					<span class="btn btn-sm btn-primary example-add-content">Add content</span>
+					<span class="btn btn-sm btn-warning example-remove-content">Remove content</span>
+					<!--<span class="btn btn-sm btn-info    example-no-wrap">Word wrap toggle</span>-->
+					<span class="btn btn-sm btn-success example-init">Init</span>
+					<span class="btn btn-sm btn-danger  example-destroy">Destroy</span>
+					<!--<label class="checkbox"><input type="checkbox" class="example-init-flag" checked> Re-init after content change</label>-->
+				</div>
+			</div>
+
+
 
 			<h2>Advanced usage</h2>
 			<p>Custom-scroll is listening the <code>scroll</code> event at inner element, so you can use

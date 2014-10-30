@@ -127,6 +127,13 @@ h2 {
 }
 
 
+.test-box.hard {
+	height: auto;
+	max-height: 200px;
+}
+
+
+
 .code {
     white-space: pre;
 }

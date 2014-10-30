@@ -96,7 +96,7 @@ $('.cs-controls')
 		var $controls = $(this).closest('.cs-controls');
 		$($controls.data('test')).each(function() {
 			var $container = $(this);
-			addContent($container.find('.lorem'), 3);
+			addContent($container.find('.lorem'), 1);
 			$container.customScroll();
 		});
 	})
@@ -104,7 +104,7 @@ $('.cs-controls')
 		var $controls = $(this).closest('.cs-controls');
 		$($controls.data('test')).each(function() {
 			var $container = $(this);
-			removeContent($container.find('.lorem'), 3);
+			removeContent($container.find('.lorem'), 1);
 			$container.customScroll();
 		});
 	})
@@ -117,6 +117,11 @@ $('.cs-controls')
 		var $controls = $(this).closest('.cs-controls');
 		var $container = $($controls.data('test'));
 		$container.customScroll('destroy');
+	})
+	.on('click', '.example-toggle', function() {
+		var $controls = $(this).closest('.cs-controls');
+		var $container = $($controls.data('test'));
+		$container.toggle();
 	});
 
 
