@@ -35,6 +35,7 @@
 		if (cs) options = cs.options;
 		else options = $.extend({}, defaultOptions, options);
 
+		var isContainerVisible = $container.is(':visible');
 		var isBarHidden = {};
 		var lastDims = {
 			x: {},
@@ -54,20 +55,31 @@
 		}
 
 		$container.addClass(options.prefix+'container');
+
+
 		// scroll dimensions in case of hidden element
 		var tmp = $('<div class="'+ options.prefix+'inner" />').appendTo('body').css({overflow:'scroll'})[0];
 		var scrollWidth = tmp.offsetWidth-tmp.clientWidth;
 		var scrollHeight = tmp.offsetHeight-tmp.clientHeight;
 		tmp.parentElement.removeChild(tmp);
+
+
 		$inner.css({
 			/* save the padding */
 			'paddingLeft': $container.css('paddingLeft'),
 			'paddingRight': $container.css('paddingRight'),
 			/* hide scrolls */
 			'marginRight': -scrollWidth+'px',
+			'marginBottom': -scrollHeight+'px',
 			'paddingBottom': scrollHeight+'px'
 		});
-		$container.css({padding: 0});
+		var maxHeight = $container.css('maxHeight');
+		if (parseInt(maxHeight)) {
+			$inner.css('maxHeight', maxHeight);
+		}
+
+
+		$container.css({padding: 0}).scrollTop(0);
 
 
 		var $body = $('body');
@@ -135,7 +147,7 @@
 
 			var bar = Math.max((scroll*dim/total)|0, options['barMin' + dir.Dim]);
 			var ratio = (scroll-bar)/(total-inner);
-			//if (dirKey == 'x' && $container.is('#example')) console.log('dim', dim, inner, scroll, total, bar, ratio)
+			if (dirKey == 'y' && $container.is('#example-hard')) console.log('dim', dim, inner, scroll, total, bar, ratio)
 
 			return {
 				ratio: ratio,
@@ -147,12 +159,17 @@
 		}
 
 		function updateBar() {
+			if (!isContainerVisible) {
+				isContainerVisible = $container.is(':visible');
+				$container.scrollTop(0);
+			}
 			upd('y');
 			upd('x');
 		}
 		function upd(dirKey) {
 			var dir = DIRS[dirKey];
 			var dims = getDims(dirKey);
+			if (!dims.total) return;
 
 			var scrollPos = $inner['scroll' + dir.Dir]();
 			if (
@@ -170,7 +187,7 @@
 				isBarHidden[dirKey] = isHide;
 			}
 			var barPos = scrollPos*dims.ratio;
-			//console.log('upd', scrollPos, dims.ratio, barPos)
+//			console.log('upd', scrollPos, dims.ratio, barPos)
 			//if (dirKey === 'y') console.log(barPos, dims.scroll, dims.bar, dims)
 			if (barPos<0) barPos = 0;
 			if (barPos>dims.scroll-dims.bar) barPos = dims.scroll-dims.bar;
@@ -181,7 +198,7 @@
 		function destroy() {
 			$bars.x.remove();
 			$bars.y.remove();
-			$container.removeClass(options.prefix+'container').removeData('custom-scroll');
+			$container.removeClass(options.prefix+'container').removeData('custom-scroll').css('padding', '');
 			$inner.contents().appendTo($container);
 			$inner.remove();
 		}
