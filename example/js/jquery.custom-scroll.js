@@ -1,4 +1,4 @@
-/* jQuery Custom Scroll plugin v0.6.3 | (c) 2014 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
+/* jQuery Custom Scroll plugin v0.6.4 | (c) 2014 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
 (function($) {
 	$.fn.customScroll = function(options) {
 		if (!this.length) {
@@ -58,23 +58,24 @@
 
 
 		// scroll dimensions in case of hidden element
-		var tmp = $('<div class="'+ options.prefix+'inner" />').appendTo('body').css({overflow:'scroll'})[0];
+		var tmp = $('<div class="'+ options.prefix+'inner" />').width(100).height(100).appendTo('body').css({overflow:'scroll'})[0];
 		var scrollWidth = tmp.offsetWidth-tmp.clientWidth;
 		var scrollHeight = tmp.offsetHeight-tmp.clientHeight;
 		tmp.parentElement.removeChild(tmp);
 
-
 		$inner.css({
 			/* save the padding */
-			'paddingLeft': $container.css('paddingLeft'),
-			'paddingRight': $container.css('paddingRight'),
+			paddingLeft: $container.css('paddingLeft'),
+			paddingRight: $container.css('paddingRight'),
 			/* hide scrolls */
-			'marginRight': -scrollWidth+'px',
-			'marginBottom': -scrollHeight+'px',
-			'paddingBottom': scrollHeight+'px'
+			marginRight: -scrollWidth+'px',
+			marginBottom: -scrollHeight+'px',
+			paddingBottom: scrollHeight+'px'
 		});
+		/* in case of max-height */
 		var maxHeight = $container.css('maxHeight');
 		if (parseInt(maxHeight)) {
+			$container.css('maxHeight', 'none');
 			$inner.css('maxHeight', maxHeight);
 		}
 
@@ -115,8 +116,6 @@
 			}
 
 			$bar.on('mousedown touchstart', function(e) {
-				e.stopPropagation();
-				e.preventDefault();
 				var scrollStart = $inner['scroll' + dir.Dir]();
 				var posStart = e[dir.clientAxis] || e.originalEvent.changedTouches && e.originalEvent.changedTouches[0][dir.clientAxis];
 				var ratio = getDims(dirKey).ratio;
@@ -147,7 +146,7 @@
 
 			var bar = Math.max((scroll*dim/total)|0, options['barMin' + dir.Dim]);
 			var ratio = (scroll-bar)/(total-inner);
-			if (dirKey == 'y' && $container.is('#example-hard')) console.log('dim', dim, inner, scroll, total, bar, ratio)
+//			if (dirKey == 'y' && $container.is('#example-hard')) console.log('dim', dim, inner, scroll, total, bar, ratio)
 
 			return {
 				ratio: ratio,
@@ -198,7 +197,10 @@
 		function destroy() {
 			$bars.x.remove();
 			$bars.y.remove();
-			$container.removeClass(options.prefix+'container').removeData('custom-scroll').css('padding', '');
+			$container
+				.removeClass(options.prefix+'container')
+				.removeData('custom-scroll')
+				.css({padding: '', maxHeight: ''});
 			$inner.contents().appendTo($container);
 			$inner.remove();
 		}
