@@ -17,7 +17,12 @@ $('#example').customScroll({
   /* will be added to offsetRight in case of vertical scroll */
   trackHeight: 10,
 
-  barHtml: '<div />'
+  /* each bar will have custom-scroll_bar-x or y class */
+  barHtml: '<div />',
+
+  /* both vertical or horizontal bar can be disabled */
+  vertical: true,
+  horizontal: true
 });
 
 

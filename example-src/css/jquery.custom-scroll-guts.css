@@ -11,7 +11,7 @@
 	*right: 0;
 }
 
-.custom-scroll-guts_bar,
+.custom-scroll-guts_bar-y,
 .custom-scroll-guts_bar-x {
 	cursor: default;
 	position: absolute;
@@ -28,7 +28,7 @@
 
 	transition: opacity .2s;
 }
-.custom-scroll-guts_bar {
+.custom-scroll-guts_bar-y {
 	top: 0;
 	right: 1px;
 	width: 8px;
@@ -39,7 +39,7 @@
 	height: 8px;
 }
 
-.custom-scroll-guts_bar:hover,
+.custom-scroll-guts_bar-y:hover,
 .custom-scroll-guts_bar-x:hover {
 	opacity: .7;
 }
@@ -48,7 +48,7 @@
 	opacity: 1;
 }
 
-.custom-scroll-guts_hidden > .custom-scroll-guts_bar,
+.custom-scroll-guts_hidden-y > .custom-scroll-guts_bar-y,
 .custom-scroll-guts_hidden-x > .custom-scroll-guts_bar-x {
 	opacity: 0;
 	visibility: hidden;
