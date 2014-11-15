@@ -5,7 +5,7 @@
 		offsetBottom: 10
 	});
 
-	var $track = myCS.$container.find('.custom-scroll-advanced_track');
+	var $track = myCS.$container.find('.custom-scroll-advanced_track-y');
 	function myScroll(delta) {
 		var $inner = myCS.$inner;
 		$inner.animate({'scrollTop': $inner.scrollTop() + delta + 'px'}, 100);
