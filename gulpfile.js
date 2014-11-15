@@ -10,10 +10,14 @@ var es = require('event-stream');
 var rseq = require('gulp-run-sequence');
 var ghpages = require('gulp-gh-pages');
 
+gulp.task('default', ['min', 'sizes', 'copy-js', 'copy-css', 'copy', 'index']);
+
 gulp.task('deploy', function () {
 	return gulp.src('./example/**/*')
 		.pipe(ghpages());
 });
+
+
 
 gulp.task('min', function() {
     return gulp.src(['./jquery.custom-scroll.js'])
@@ -104,7 +108,6 @@ gulp.task('index', ['min', 'sizes'], function() {
 });
 
 
-gulp.task('default', ['min', 'sizes', 'copy-js', 'copy-css', 'index']);
 
 
 
