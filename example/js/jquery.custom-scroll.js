@@ -17,6 +17,7 @@
 		});
 	};
 
+
 	var defaultOptions = {
 		prefix: 'custom-scroll_',
 		barMinHeight: 10,
@@ -27,25 +28,59 @@
 		offsetRight:  0,
 		trackWidth:   10,
 		trackHeight:  10,
-		barHtml: '<div />'
+		barHtml: '<div />',
+		vertical: true,
+		horizontal: true
+	};
+
+	var DIRS_VERTICAL = {
+//		axis: 'y',
+		dim: 'height',
+		Dim: 'Height',
+		dir: 'top',
+		Dir: 'Top',
+		dir2: 'bottom',
+		Dir2: 'Bottom',
+		clientAxis: 'clientY',
+		suffix: '-y'
+	};
+	var DIRS_HORIZONTAL = {
+//		axis: 'x',
+		dim: 'width',
+		Dim: 'Width',
+		dir: 'left',
+		Dir: 'Left',
+		dir2: 'right',
+		Dir2: 'Right',
+		clientAxis: 'clientX',
+		suffix: '-x'
 	};
 
 	function customScroll($container, options) {
 		var cs = $container.data('custom-scroll');
 		if (cs) options = cs.options;
 		else options = $.extend({}, defaultOptions, options);
+		var dirs = {};
+		var lastDims = {};
 
-		var isContainerVisible = $container.is(':visible');
-		var isBarHidden = {};
-		var lastDims = {
-			x: {},
-			y: {}
+		var isBarHidden = {
+			x: +options.vertical,
+			y: +options.horizontal
 		};
+
+		if (options.horizontal) {
+			dirs.x = DIRS_HORIZONTAL;
+			lastDims.x = {};
+		}
+		if (options.vertical) {
+			dirs.y = DIRS_VERTICAL;
+			lastDims.y = {};
+		}
 
 		if ($container.hasClass(options.prefix+'container')) {
 			var cs = $container.data('custom-scroll');
 			if (cs) {
-				cs.updateBar();
+				cs.updateBars();
 				return cs;
 			}
 		}
@@ -63,15 +98,36 @@
 		var scrollHeight = tmp.offsetHeight-tmp.clientHeight;
 		tmp.parentElement.removeChild(tmp);
 
-		$inner.css({
-			/* save the padding */
-			paddingLeft: $container.css('paddingLeft'),
-			paddingRight: $container.css('paddingRight'),
-			/* hide scrolls */
-			marginRight: -scrollWidth+'px',
-			marginBottom: -scrollHeight+'px',
-			paddingBottom: scrollHeight+'px'
-		});
+		if (options.vertical) {
+			$inner.css({
+				/* save the padding */
+				paddingLeft: $container.css('paddingLeft'),
+				paddingRight: $container.css('paddingRight'),
+				/* hide scrolls */
+				marginRight: -scrollWidth+'px'
+
+			});
+			$container.css({
+				paddingLeft: 0,
+				paddingRight: 0
+			});
+		} else {
+			$inner.css({overflowY: 'hidden'})
+		}
+		if (options.horizontal) {
+			$inner.css({
+				/* hide scrolls */
+				marginBottom: -scrollHeight+'px',
+				paddingBottom: scrollHeight+'px'
+			});
+			$container.css({
+				paddingTop: 0,
+				paddingBottom: 0
+			});
+		} else {
+			$inner.css({overflowX: 'hidden'})
+		}
+
 		/* in case of max-height */
 		var maxHeight = $container.css('maxHeight');
 		if (parseInt(maxHeight)) {
@@ -80,17 +136,16 @@
 		}
 
 
-		$container.css({padding: 0}).scrollTop(0);
+		$container.scrollTop(0);
 
 
 		var $body = $('body');
 
 		var $bars = {};
-		$bars.y = initBar('y');
-		$bars.x = initBar('x');
+		$.each(dirs, initBar);
 
-		$inner.on('scroll', updateBar);
-		updateBar();
+		$inner.on('scroll', updateBars);
+		updateBars();
 
 		var data = {
 			$container: $container,
@@ -98,15 +153,16 @@
 			$barX: $bars.x,
 			$inner: $inner,
 			destroy: destroy,
-			updateBar: updateBar,
+			updateBars: updateBars,
 			options: options
 		};
 		$container.data('custom-scroll', data);
 		return data;
 
 
-		function initBar(dirKey) {
-			var dir = DIRS[dirKey];
+		function initBar(dirKey, dir) {
+//			console.log('initBar', dirKey, dir)
+//			var dir = DIRS[dirKey];
 			$container['scroll' + dir.Dir](0);
 
 			var cls = options.prefix+'bar'+dir.suffix;
@@ -116,30 +172,27 @@
 			}
 
 			$bar.on('mousedown touchstart', function(e) {
+				e.preventDefault(); // stop scrolling in ie9
 				var scrollStart = $inner['scroll' + dir.Dir]();
 				var posStart = e[dir.clientAxis] || e.originalEvent.changedTouches && e.originalEvent.changedTouches[0][dir.clientAxis];
-				var ratio = getDims(dirKey).ratio;
+				var ratio = getDims(dirKey, dir).ratio;
 
 				$body.on('mousemove.custom-scroll touchmove.custom-scroll', function(e) {
-					e.stopPropagation();
-					e.preventDefault();
+					e.preventDefault(); // stop scrolling
 					var pos = e[dir.clientAxis] || e.originalEvent.changedTouches && e.originalEvent.changedTouches[0][dir.clientAxis];
-					var diff = pos-posStart;
-					//console.log('move', scrollStart, diff, ratio)
-					$inner['scroll' + dir.Dir](scrollStart + diff/ratio);
+					$inner['scroll' + dir.Dir](scrollStart + (pos-posStart)/ratio);
 				});
 				$body.on('mouseup.custom-scroll touchend.custom-scroll', function() {
 					$body.off('.custom-scroll');
 				});
 			});
-			return $bar;
+			$bars[dirKey] = $bar;
 		}
 
-		function getDims(dirKey) {
-			var dir = DIRS[dirKey];
+		function getDims(dirKey, dir) {
+//			console.log('getDims', dirKey, dir)
 			var total = $inner.prop('scroll' + dir.Dim)|0;
 			var dim = $container['inner' + dir.Dim]();
-			//var dim = $container[dir.dim]();
 			var inner = $inner['inner' + dir.Dim]();
 			var scroll = dim - options['offset' + dir.Dir] - options['offset' + dir.Dir2];
 			if (!isBarHidden[dirKey == 'x' ? 'y' : 'x']) scroll -= options['track'+dir.Dim];
@@ -157,17 +210,12 @@
 			}
 		}
 
-		function updateBar() {
-			if (!isContainerVisible) {
-				isContainerVisible = $container.is(':visible');
-				$container.scrollTop(0);
-			}
-			upd('y');
-			upd('x');
+		function updateBars() {
+			$.each(dirs, updateBar);
 		}
-		function upd(dirKey) {
-			var dir = DIRS[dirKey];
-			var dims = getDims(dirKey);
+		function updateBar(dirKey, dir) {
+//			var dir = DIRS[dirKey];
+			var dims = getDims(dirKey, dir);
 			if (!dims.total) return;
 
 			var scrollPos = $inner['scroll' + dir.Dir]();
@@ -195,8 +243,7 @@
 		}
 
 		function destroy() {
-			$bars.x.remove();
-			$bars.y.remove();
+			$.each(dirs, function(key) { $bars[key].remove(); });
 			$container
 				.removeClass(options.prefix+'container')
 				.removeData('custom-scroll')
@@ -206,28 +253,7 @@
 		}
 	}
 
-	var DIRS = {
-		x: {
-			dim: 'width',
-			Dim: 'Width',
-			dir: 'left',
-			Dir: 'Left',
-			dir2: 'right',
-			Dir2: 'Right',
-			clientAxis: 'clientX',
-			suffix: '-x'
-		},
-		y: {
-			dim: 'height',
-			Dim: 'Height',
-			dir: 'top',
-			Dir: 'Top',
-			dir2: 'bottom',
-			Dir2: 'Bottom',
-			clientAxis: 'clientY',
-			suffix: ''
-		}
-	};
+
 
 
 })(jQuery);

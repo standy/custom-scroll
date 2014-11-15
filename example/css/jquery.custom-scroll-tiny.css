@@ -13,7 +13,7 @@
 .custom-scroll-tiny_inner::-webkit-scrollbar { width: 0; height: 0; }
 .custom-scroll-tiny_inner{ -ms-overflow-style: none; }
 
-.custom-scroll-tiny_bar,
+.custom-scroll-tiny_bar-y,
 .custom-scroll-tiny_bar-x {
 	cursor: default;
 	position: absolute;
@@ -30,7 +30,7 @@
 
 	transition: opacity .2s;
 }
-.custom-scroll-tiny_bar {
+.custom-scroll-tiny_bar-y {
 	top: 0;
 	right: 1px;
 	width: 8px;
@@ -41,7 +41,7 @@
 	height: 8px;
 }
 
-.custom-scroll-tiny_bar:hover,
+.custom-scroll-tiny_bar-y:hover,
 .custom-scroll-tiny_bar-x:hover {
 	opacity: .7;
 }
@@ -50,7 +50,7 @@
 	opacity: 1;
 }
 
-.custom-scroll-tiny_hidden > .custom-scroll-tiny_bar,
+.custom-scroll-tiny_hidden-y > .custom-scroll-tiny_bar-y,
 .custom-scroll-tiny_hidden-x > .custom-scroll-tiny_bar-x {
 	opacity: 0;
 	visibility: hidden;
@@ -59,7 +59,7 @@
 
 
 /* changes */
-.custom-scroll-tiny_bar {
+.custom-scroll-tiny_bar-y {
 	right: -4px;
 	width: 4px;
 	transition: right .2s, background .2s;
@@ -70,9 +70,9 @@
 	transition: bottom .2s, background .2s;
 }
 
-.custom-scroll-tiny_bar:active,
-.custom-scroll-tiny_inner:focus .custom-scroll-tiny_bar,
-.custom-scroll-tiny_container:hover .custom-scroll-tiny_bar {
+.custom-scroll-tiny_bar-y:active,
+.custom-scroll-tiny_inner:focus .custom-scroll-tiny_bar-y,
+.custom-scroll-tiny_container:hover .custom-scroll-tiny_bar-y {
 	right: 1px;
 }
 .custom-scroll-tiny_bar-x:active,

@@ -13,7 +13,7 @@
 .custom-scroll-pretty_inner::-webkit-scrollbar { width: 0; height: 0; }
 .custom-scroll-pretty_inner{ -ms-overflow-style: none; }
 
-.custom-scroll-pretty_bar,
+.custom-scroll-pretty_bar-y,
 .custom-scroll-pretty_bar-x {
 	cursor: default;
 	position: absolute;
@@ -30,7 +30,7 @@
 
 	transition: opacity .2s;
 }
-.custom-scroll-pretty_bar {
+.custom-scroll-pretty_bar-y {
 	top: 0;
 	right: 1px;
 	width: 8px;
@@ -41,16 +41,16 @@
 	height: 8px;
 }
 
-.custom-scroll-pretty_bar:hover,
+.custom-scroll-pretty_bar-y:hover,
 .custom-scroll-pretty_bar-x:hover {
 	opacity: .7;
 }
-.custom-scroll-pretty_bar:active,
+.custom-scroll-pretty_bar-y:active,
 .custom-scroll-pretty_bar-x:active {
 	opacity: 1;
 }
 
-.custom-scroll-pretty_hidden > .custom-scroll-pretty_bar,
+.custom-scroll-pretty_hidden-y > .custom-scroll-pretty_bar-y,
 .custom-scroll-pretty_hidden-x > .custom-scroll-pretty_bar-x {
 	opacity: 0;
 	visibility: hidden;
@@ -60,7 +60,7 @@
 
 
 /* changes */
-.custom-scroll-pretty_bar {
+.custom-scroll-pretty_bar-y {
 	right: 1px;
 	border-radius: 4px;
 	width: 8px;
@@ -71,7 +71,7 @@
 	height: 8px;
 }
 
-.custom-scroll-pretty_track,
+.custom-scroll-pretty_track-y,
 .custom-scroll-pretty_track-x {
 	position: absolute;
 	background: #eee;
@@ -79,13 +79,13 @@
 	box-shadow: inset 0 0 4px rgba(0,0,0,.1);
 	transition: box-shadow .3s;
 }
-.custom-scroll-pretty_track {
+.custom-scroll-pretty_track-y {
 	top: 0;
 	right: 0;
 	width: 10px;
 	bottom: 10px;
 }
-.custom-scroll-pretty_hidden-x > .custom-scroll-pretty_track {
+.custom-scroll-pretty_hidden-x > .custom-scroll-pretty_track-y {
 	bottom: 0;
 }
 
@@ -95,19 +95,19 @@
 	height: 10px;
 	right: 10px;
 }
-.custom-scroll-pretty_hidden > .custom-scroll-pretty_track-x {
+.custom-scroll-pretty_hidden-y > .custom-scroll-pretty_track-x {
 	right: 0;
 }
 
 
-.custom-scroll-pretty_track:hover,
+.custom-scroll-pretty_track-y:hover,
 .custom-scroll-pretty_track-x:hover {
 	box-shadow: inset 0 0 4px rgba(0,0,0,.2);
 }
 
 
-.custom-scroll-pretty_hidden > .custom-scroll-pretty_track,
-.custom-scroll-pretty_hidden > .custom-scroll-pretty_bar {
+.custom-scroll-pretty_hidden-y > .custom-scroll-pretty_track-y,
+.custom-scroll-pretty_hidden-y > .custom-scroll-pretty_bar-y {
 	opacity: 0;
 	height: 100%;
 	top: 0;

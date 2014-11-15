@@ -14,8 +14,7 @@
 .custom-scroll_inner{ -ms-overflow-style: none; }
 
 
-
-.custom-scroll_bar,
+.custom-scroll_bar-y,
 .custom-scroll_bar-x {
 	cursor: default;
 	position: absolute;
@@ -32,7 +31,7 @@
 
 	transition: opacity .2s;
 }
-.custom-scroll_bar {
+.custom-scroll_bar-y {
 	top: 0;
 	right: 1px;
 	width: 8px;
@@ -43,16 +42,16 @@
 	height: 8px;
 }
 
-.custom-scroll_bar:hover,
+.custom-scroll_bar-y:hover,
 .custom-scroll_bar-x:hover {
 	opacity: .7;
 }
-.custom-scroll_bar:active,
+.custom-scroll_bar-y:active,
 .custom-scroll_bar-x:active {
 	opacity: 1;
 }
 
-.custom-scroll_hidden > .custom-scroll_bar,
+.custom-scroll_hidden-y > .custom-scroll_bar-y,
 .custom-scroll_hidden-x > .custom-scroll_bar-x {
 	opacity: 0;
 	visibility: hidden;
