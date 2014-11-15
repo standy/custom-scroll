@@ -1,4 +1,4 @@
-/* jQuery Custom Scroll plugin v0.6.4 | (c) 2014 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
+/* jQuery Custom Scroll plugin v0.6.5 | (c) 2014 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
 (function($) {
 	$.fn.customScroll = function(options) {
 		if (!this.length) {
@@ -77,12 +77,9 @@
 			lastDims.y = {};
 		}
 
-		if ($container.hasClass(options.prefix+'container')) {
-			var cs = $container.data('custom-scroll');
-			if (cs) {
-				cs.updateBars();
-				return cs;
-			}
+		if ($container.hasClass(options.prefix+'container') && cs) {
+			cs.updateBars();
+			return cs;
 		}
 		var $inner = $container.children('.'+options.prefix+'inner');
 		if (!$inner.length) {

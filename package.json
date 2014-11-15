@@ -1,6 +1,6 @@
 {
   "name": "custom-scroll",
-  "version": "0.6.3",
+  "version": "0.6.5",
   "description": "Customize your scrollbar with native scrolling",
   "author": "Mostovoy Andrey <mostovoyav@gmail.com>",
   "repository": {
@@ -24,7 +24,6 @@
     "gulp-gh-pages": "^0.4.0",
     "gulp-rename": "^1.2.0",
     "gulp-run-sequence": "^0.3.2",
-    "gulp-size": "^1.1.0",
     "gulp-template": "^1.1.1",
     "gulp-uglify": "^1.0.1"
   },
