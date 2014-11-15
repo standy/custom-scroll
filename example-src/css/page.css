@@ -128,8 +128,8 @@ h2 {
 
 
 .test-box.hard {
-	height: auto;
-	max-height: 200px;
+	/*height: auto;*/
+	/*max-height: 200px;*/
 	padding: 0 50px;
 	box-shadow: inset 100px 0 0 -50px rgba(233, 144, 2, 0.1),
 				inset -100px 0 0  -50px rgba(233, 144, 2, 0.1);

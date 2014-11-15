@@ -89,7 +89,7 @@ $('.cs-controls')
 		$($controls.data('test')).each(function() {
 			var $container = $(this);
 			$container.toggleClass('no-wrap');
-			if (!$container.hasClass('no-init')) $container.customScroll();
+			$container.customScroll();
 		});
 	})
 	.on('click', '.example-add-content', function() {
@@ -97,7 +97,7 @@ $('.cs-controls')
 		$($controls.data('test')).each(function() {
 			var $container = $(this);
 			addContent($container.find('.lorem'), 1);
-			if (!$container.hasClass('no-init')) $container.customScroll();
+			$container.customScroll();
 		});
 	})
 	.on('click', '.example-remove-content', function() {
@@ -105,23 +105,23 @@ $('.cs-controls')
 		$($controls.data('test')).each(function() {
 			var $container = $(this);
 			removeContent($container.find('.lorem'), 1);
-			if (!$container.hasClass('no-init')) $container.customScroll();
+			$container.customScroll();
 		});
 	})
 	.on('click', '.example-init', function() {
 		var $controls = $(this).closest('.cs-controls');
 		var $container = $($controls.data('test'));
-		if (!$container.hasClass('no-init')) $container.customScroll($controls.data('options'));
+		$container.customScroll($controls.data('options'));
 	})
 	.on('click', '.example-destroy', function() {
 		var $controls = $(this).closest('.cs-controls');
 		var $container = $($controls.data('test'));
-		if (!$container.hasClass('no-init')) $container.customScroll('destroy');
+		$container.customScroll('destroy');
 	})
 	.on('click', '.example-toggle', function() {
 		var $controls = $(this).closest('.cs-controls');
 		var $container = $($controls.data('test'));
-		if (!$container.hasClass('no-init')) $container.toggle();
+		$container.toggle();
 	});
 
 
@@ -132,16 +132,13 @@ $('.test-box:not(.guts) .lorem').each(function() {
 
 addContent($('#example .lorem'), 4);
 addContent($('#example-advanced .lorem'), 3);
-var cs =
-$('#example').customScroll({vertical: 1, horizontal: 0});
+var cs = $('#example').customScroll();
 
 addContent($('#example-textarea textarea').val(''), 6);
-$('#example-textarea').customScroll();
+var cst = $('#example-textarea').customScroll();
 
 
-$('#example-hard').customScroll({
-	horizontal: false
-});
+
 
 /* tiny */
 $('#example-tiny').customScroll({
