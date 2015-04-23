@@ -1,84 +1,70 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var size = require('gulp-size');
 var template = require('gulp-template');
-var prism = require('./example-src/prism.js');
+var prism = require('./source/example/prism.js');
 var fs = require('fs');
 
-var es = require('event-stream');
-var rseq = require('gulp-run-sequence');
-var ghpages = require('gulp-gh-pages');
+var runSequence = require('run-sequence');
+var ghPages = require('gulp-gh-pages');
+var gzipSize = require('gzip-size');
+var prettyBytes = require('pretty-bytes');
+var del = require('del');
 
-gulp.task('default', ['min', 'sizes', 'copy-js', 'copy-css', 'copy', 'index']);
+gulp.task('default', ['build']);
 
-gulp.task('deploy', function () {
-	return gulp.src('./example/**/*')
-		.pipe(ghpages());
+gulp.task('build', function(cb) {
+	runSequence('clear', ['css', 'js', 'example-misc'], 'example-html', cb);
+});
+
+gulp.task('dev', ['build'], function() {
+	gulp.watch('./source/*.js', ['js']);
+	gulp.watch('./source/*.css', ['css']);
+	gulp.watch(['./source/example/css/**/*.css', './source/example/js/**/*.js'], ['example-misc']);
+	gulp.watch('./source/example/index.html', ['example-html']);
+});
+
+
+gulp.task('gh-pages', ['build'], function () {
+	return gulp.src('./dist/example/**/*')
+		.pipe(ghPages());
 });
 
 
 
-gulp.task('min', function() {
-    return gulp.src(['./jquery.custom-scroll.js'])
-        .pipe(uglify({
-            preserveComments: function(node, comment) {
-                return comment.pos === 0;
-            }
-        }))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./'));
+gulp.task('clear', function(cb) {
+	del(['dist'], cb);
 });
 
 
-gulp.task('watch', function() {
-    gulp.watch('./jquery.custom-scroll.js', ['copy-js']);
-    gulp.watch('./jquery.custom-scroll.css', ['copy-css']);
-    gulp.watch('./example-src/index.html', ['index']);
-    gulp.watch('./example-src/css/**', ['copy']);
-    gulp.watch('./example-src/js/**', ['copy']);
+gulp.task('css', function() {
+	return gulp.src(['./source/*.css'])
+		.pipe(gulp.dest('./dist/example/css'));
+//		.pipe(gulp.dest('./dist'));
+});
+
+gulp.task('js', function() {
+	return gulp.src(['./source/*.js'])
+		.pipe(gulp.dest('./dist/example/js'))
+		.pipe(uglify({
+			preserveComments: function(node, comment) {
+				return comment.pos === 0;
+			}
+		}))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('./dist/example/js'));
 });
 
 
-
-/* examples build */
-gulp.task('copy-js', function() {
-	return es.merge(
-		pipe(['./jquery.custom-scroll.js'], './example-src/js'),
-		pipe(['./jquery.custom-scroll.js'], './example/js')
-	);
+gulp.task('example-misc', function() {
+	return gulp.src(['./source/example/css/**/*.css', './source/example/js/**/*.js'], {base: './source/example'})
+		.pipe(gulp.dest('./dist/example'));
 });
 
-gulp.task('copy-css', function() {
-	return es.merge(
-		pipe(['./jquery.custom-scroll.css'], './example-src/css'),
-		pipe(['./jquery.custom-scroll.css'], './example/css')
-	);
-});
-
-
-var sizes = {};
-function saveSizes(newSizes)  {
-	for (var key in newSizes) if (newSizes.hasOwnProperty(key)) {
-		sizes[key] = newSizes[key].pretty;
-	}
-}
-gulp.task('sizes', ['min'], function() {
-	return gulp.src(['./jquery.custom-scroll.css', './jquery.custom-scroll.js', './jquery.custom-scroll.min.js'])
-		.pipe(size({showFiles: true, gzip: false}, saveSizes))
-		.pipe(size({showFiles: true, gzip: true}, saveSizes))
-});
-
-
-gulp.task('copy', function() {
-	return es.merge(
-		pipe(['./example-src/css/**'], './example/css'),
-		pipe(['./example-src/js/**'], './example/js')
-	);
-});
-gulp.task('index', ['min', 'sizes'], function() {
+gulp.task('example-html', ['js', 'css'], function() {
 	var data = {
-		sizes: sizes,
+		sizes: {},
+		sizesGzipped: {},
 		files: {}
 	};
 	var types = {
@@ -87,6 +73,17 @@ gulp.task('index', ['min', 'sizes'], function() {
 		html: 'markup'
 	};
 	[
+		'css/jquery.custom-scroll.css',
+		'js/jquery.custom-scroll.js',
+		'js/jquery.custom-scroll.min.js'
+	].forEach(function(fileName) {
+			var stats = fs.statSync('./dist/example/' + fileName);
+			data.sizes[fileName] = prettyBytes(stats.size);
+			var file = fs.readFileSync('./dist/example/' + fileName, 'utf8');
+			data.sizesGzipped[fileName] = prettyBytes(gzipSize.sync(file));
+		});
+
+	[
 		'code-block/include.html',
 		'code-block/how-it-works.html',
 		'code-block/init.js',
@@ -94,37 +91,15 @@ gulp.task('index', ['min', 'sizes'], function() {
 		'css/jquery.custom-scroll-tiny.css',
 		'js/example-advanced.js'
 	]
-		.forEach(function(filename) {
-			var file = fs.readFileSync('./example-src/' + filename, 'utf8');
-			var type = filename.split('.').pop();
+		.forEach(function(fileName) {
+			var file = fs.readFileSync('./source/example/' + fileName, 'utf8');
+			var type = fileName.split('.').pop();
 			var filePrism = prism.highlight(file, prism.languages[types[type]]);
 			var filePrismNum = '<ol><li>' + filePrism.split('\n</span>').join('</span>\n').split('\n').join('</li><li>') + '</li></ol>';
-			data.files[filename] = filePrismNum;
+			data.files[fileName] = filePrismNum;
 		});
-	return gulp.src('./example-src/index.html')
+	return gulp.src('./source/example/index.html')
 		.pipe(template(data))
-		.pipe(rename('index.html'))
-		.pipe(gulp.dest('./example/'));
+		.pipe(gulp.dest('./dist/example/'));
 });
 
-
-
-
-
-function pipe(src, transforms, dest) {
-	if (typeof transforms === 'string') {
-		dest = transforms;
-		transforms = null;
-	}
-
-	var stream = gulp.src(src);
-	transforms && transforms.forEach(function(transform) {
-		stream = stream.pipe(transform);
-	});
-
-	if (dest) {
-		stream = stream.pipe(gulp.dest(dest));
-	}
-
-	return stream;
-}

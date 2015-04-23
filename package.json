@@ -19,13 +19,20 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "event-stream": "^3.1.7",
-    "gulp": "^3.8.9",
-    "gulp-gh-pages": "^0.4.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-run-sequence": "^0.3.2",
-    "gulp-template": "^1.1.1",
-    "gulp-uglify": "^1.0.1"
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-gh-pages": "^0.5.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^3.0.0",
+    "gulp-uglify": "^1.2.0",
+    "gzip-size": "^1.0.0",
+    "pretty-bytes": "^1.0.4",
+    "run-sequence": "^1.0.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/standy/custom-scroll",
+  "main": "source/jquery.custom-scroll.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

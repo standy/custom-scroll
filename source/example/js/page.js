@@ -132,8 +132,8 @@ $('.test-box:not(.guts) .lorem').each(function() {
 
 addContent($('#example .lorem'), 4);
 addContent($('#example-advanced .lorem'), 3);
-var cs =
-$('#example').customScroll({vertical: 1, horizontal: 0});
+
+$('#example').customScroll();
 
 addContent($('#example-textarea textarea').val(''), 6);
 $('#example-textarea').customScroll();
