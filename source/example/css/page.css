@@ -1,0 +1,147 @@
+.navbar {
+	margin-bottom: 40px;
+}
+.navbar-h1 {
+	font-size: 24px;
+	color: #eee;
+}
+h2 {
+	margin-top: 50px;
+}
+.sidebar-content {
+}
+.sidebar-content h2 {
+	margin-top: 10px;
+}
+
+.affix {
+	position: static;
+	top: 0;
+}
+
+@media only screen and (min-width: 992px) {
+    .affix-bottom {
+        position: absolute;
+    }
+	.sidebar-content {
+		width: 280px;
+	}
+	.sidebar-content.affix {
+		top: 12px;
+		position: fixed;
+	}
+}
+.cs-footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin-top: 40px;
+	border-top: 1px solid #ddd;
+	color: #777;
+}
+
+
+.cs-example {
+	padding: 14px 20px;
+	margin: 0 0 15px;
+	/*background-color: #fff;*/
+
+	border: 1px solid #ccc;
+	/*border-radius: 4px;*/
+	box-shadow: none;
+	background: #f5f2f0;
+}
+.cs-controls {
+	margin-top: 15px;
+	margin-bottom: -10px;
+}
+.cs-controls .btn {
+	margin-bottom: 10px;
+}
+.cs-example + .cs-controls {
+	margin-top: -16px;
+	border-top: none;
+	border-radius: 0 0 4px 4px;
+}
+
+.cs-controls label {
+	font-weight: normal;
+}
+.cs-controls > span {
+	margin-right: 10px;
+}
+.cs-controls .checkbox {
+	margin-bottom: 0;
+}
+
+
+/*.test-box * {*/
+.cs-example * {
+	box-sizing: content-box; /* bootstrap override default */
+}
+.cs-example .row {
+    box-sizing: border-box;
+    margin-bottom: -10px;
+}
+.cs-example .row >div {
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.test-box {
+	border: 2px solid #3071a9;
+	background-color: #fff;
+	height: 250px;
+	padding: 0 10px;
+	overflow: auto;
+}
+.test-box + .test-box {
+	margin-top: 15px;
+}
+.test-box.no-wrap {
+	white-space: nowrap;
+}
+
+.test-box.guts {
+	height: 250px;
+}
+.test-box.guts.custom-scroll-guts_container {
+	overflow: visible !important;
+}
+.test-box.guts > .custom-scroll-guts_inner {
+	border: 2px solid #FF8888;
+}
+
+.test-box.textarea {
+	display: inline-block;
+	*width: 573px;
+}
+.test-box textarea {
+	border: none;
+	padding: 0;
+	overflow-x: hidden;
+	font-size: 13px;
+	width: 570px;
+}
+.test-box textarea:focus {
+	outline: none;
+}
+
+
+.test-box.hard {
+	height: auto;
+	max-height: 200px;
+	padding: 0 50px;
+	box-shadow: inset 100px 0 0 -50px rgba(233, 144, 2, 0.1),
+				inset -100px 0 0  -50px rgba(233, 144, 2, 0.1);
+}
+
+
+
+.code {
+    white-space: pre;
+}
+
+
+.lorem {
+	color: #999;
+}

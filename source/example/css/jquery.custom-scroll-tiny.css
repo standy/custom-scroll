@@ -1,0 +1,82 @@
+.custom-scroll-tiny_container {
+	overflow: hidden !important;
+	position: relative;
+}
+
+.custom-scroll-tiny_inner {
+	overflow: scroll;
+	height: 100%;
+	*position: absolute; /* ie7 fix */
+	*left: 0;
+	*right: 0;
+}
+.custom-scroll-tiny_inner::-webkit-scrollbar { width: 0; height: 0; }
+.custom-scroll-tiny_inner{ -ms-overflow-style: none; }
+
+.custom-scroll-tiny_bar-y,
+.custom-scroll-tiny_bar-x {
+	cursor: default;
+	position: absolute;
+	border-radius: 1px;
+	z-index: 1;
+	background: #888;
+	opacity: .4;
+
+	-webkit-user-select: none;
+	 -khtml-user-select: none;
+	   -moz-user-select: none;
+	     -o-user-select: none;
+	        user-select: none;
+
+	transition: opacity .2s;
+}
+.custom-scroll-tiny_bar-y {
+	top: 0;
+	right: 1px;
+	width: 8px;
+}
+.custom-scroll-tiny_bar-x {
+	left: 0;
+	bottom: 1px;
+	height: 8px;
+}
+
+.custom-scroll-tiny_bar-y:hover,
+.custom-scroll-tiny_bar-x:hover {
+	opacity: .7;
+}
+.custom-scroll-tiny_bar:active,
+.custom-scroll-tiny_bar-x:active {
+	opacity: 1;
+}
+
+.custom-scroll-tiny_hidden-y > .custom-scroll-tiny_bar-y,
+.custom-scroll-tiny_hidden-x > .custom-scroll-tiny_bar-x {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .2s, visibility step-end .3s;
+}
+
+
+/* changes */
+.custom-scroll-tiny_bar-y {
+	right: -4px;
+	width: 4px;
+	transition: right .2s, background .2s;
+}
+.custom-scroll-tiny_bar-x {
+	bottom: -4px;
+	height: 4px;
+	transition: bottom .2s, background .2s;
+}
+
+.custom-scroll-tiny_bar-y:active,
+.custom-scroll-tiny_inner:focus .custom-scroll-tiny_bar-y,
+.custom-scroll-tiny_container:hover .custom-scroll-tiny_bar-y {
+	right: 1px;
+}
+.custom-scroll-tiny_bar-x:active,
+.custom-scroll-tiny_inner:focus .custom-scroll-tiny_bar-x,
+.custom-scroll-tiny_container:hover .custom-scroll-tiny_bar-x {
+	bottom: 1px;
+}

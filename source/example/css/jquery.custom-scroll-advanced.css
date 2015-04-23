@@ -1,0 +1,105 @@
+.custom-scroll-advanced_container {
+	overflow: hidden !important;
+	position: relative;
+}
+
+.custom-scroll-advanced_inner {
+	overflow: scroll;
+	height: 100%;
+	*position: absolute; /* ie7 fix */
+	*left: 0;
+	*right: 0;
+}
+.custom-scroll-advanced_inner::-webkit-scrollbar { width: 0; height: 0; }
+.custom-scroll-advanced_inner{ -ms-overflow-style: none; }
+
+.custom-scroll-advanced_bar-y,
+.custom-scroll-advanced_bar-x {
+	cursor: default;
+	position: absolute;
+	border-radius: 1px;
+	z-index: 1;
+	background: #888;
+	opacity: .4;
+
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+
+	transition: opacity .2s;
+}
+.custom-scroll-advanced_bar-y {
+	top: 0;
+	right: 1px;
+	width: 8px;
+}
+.custom-scroll-advanced_bar-x {
+	left: 0;
+	bottom: 1px;
+	height: 8px;
+}
+
+.custom-scroll-advanced_bar-y:hover,
+.custom-scroll-advanced_bar-x:hover {
+	opacity: .7;
+}
+.custom-scroll-advanced_bar-y:active,
+.custom-scroll-advanced_bar-x:active {
+	opacity: 1;
+}
+
+.custom-scroll-advanced_hidden-y > .custom-scroll-advanced_bar-y,
+.custom-scroll-advanced_hidden-x > .custom-scroll-advanced_bar-x {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .2s, visibility step-end .3s;
+}
+
+
+/* changes */
+
+.custom-scroll-advanced_track-y {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 10px;
+	background: #eee;
+	border-radius: 2px;
+	box-shadow: inset 0 0 2px rgba(0,0,0,.1);
+	transition: box-shadow .3s;
+}
+.custom-scroll-advanced_track-y > .arrow {
+	position: absolute;
+	right: 0;
+	width: 8px;
+	height: 8px;
+	background: #ccc;
+	border: 1px solid #eee;
+	box-shadow: inset 0 0 3px rgba(255,255,255,.1);
+}
+.custom-scroll-advanced_track-y > .top {
+	top: 0;
+}
+.custom-scroll-advanced_track-y > .bottom {
+	bottom: 0;
+}
+.custom-scroll-advanced_track-y > .arrow:hover {
+	background-color: #aaa;
+	box-shadow: none;
+}
+
+.custom-scroll-advanced_track-y:hover {
+	box-shadow: inset 0 0 2px rgba(255,255,255,.2);
+}
+
+.custom-scroll-advanced_hidden-y > .custom-scroll-advanced_track-y,
+.custom-scroll-advanced_hidden-y > .custom-scroll-advanced_bar-y {
+	opacity: 0;
+	height: 100%;
+	top: 0;
+	visibility: hidden;
+	transition: opacity .3s, height .3s, top .1s, visibility step-end .3s;
+}
