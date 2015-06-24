@@ -1,4 +1,4 @@
-/* jQuery Custom Scroll plugin v0.6.5 | (c) 2014 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
+/* jQuery Custom Scroll plugin v0.6.6 | (c) 2015 Mostovoy Andrey | https://github.com/standy/custom-scroll/blob/master/LICENSE */
 (function($) {
 	$.fn.customScroll = function(options) {
 		if (!this.length) {
@@ -30,7 +30,8 @@
 		trackHeight:  10,
 		barHtml: '<div />',
 		vertical: true,
-		horizontal: true
+		horizontal: true,
+		preventParentScroll: true
 	};
 
 	var DIRS_VERTICAL = {
@@ -143,6 +144,7 @@
 
 		$inner.on('scroll', updateBars);
 		updateBars();
+		if (options.preventParentScroll) preventParentScroll();
 
 		var data = {
 			$container: $container,
@@ -156,6 +158,21 @@
 		$container.data('custom-scroll', data);
 		return data;
 
+
+		function preventParentScroll() {
+			$inner.on('DOMMouseScroll mousewheel', function(e) {
+				var $this = $(this);
+				var scrollTop = this.scrollTop;
+				var scrollHeight = this.scrollHeight;
+				var height = $this.height();
+				var delta = (e.type == 'DOMMouseScroll' ? e.originalEvent.detail * -40 : e.originalEvent.wheelDelta);
+				var up = delta > 0;
+
+				if (up ? scrollTop === 0 : scrollTop === scrollHeight - height) {
+					e.preventDefault();
+				}
+			});
+		}
 
 		function initBar(dirKey, dir) {
 //			console.log('initBar', dirKey, dir)
@@ -249,8 +266,4 @@
 			$inner.remove();
 		}
 	}
-
-
-
-
 })(jQuery);
