@@ -5,6 +5,7 @@
 
 .custom-scroll_inner {
 	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 	height: 100%;
 	*position: absolute; /* ie7 fix */
 	*left: 0;
